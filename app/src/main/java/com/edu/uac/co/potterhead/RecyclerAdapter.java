@@ -73,7 +73,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Charac
         } else {
             holder.tvMinMagic.setText("false");
         }
-        holder.tvAlias.setText(character.getAlias());
+        String alias = character.getAlias();
+        if(alias==null ){
+            holder.tvAlias.setVisibility(View.GONE);
+            holder.aliasLabel.setVisibility(View.GONE);
+        }else{
+            holder.tvAlias.setVisibility(View.VISIBLE);
+            holder.aliasLabel.setVisibility(View.VISIBLE);
+            holder.tvAlias.setText(character.getAlias());
+        }
+
         holder.tvWand.setText(character.getWand());
         holder.tvBoggart.setText(character.getBoggart());
         holder.tvAnimagus.setText(character.getAnimagus());
@@ -100,6 +109,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Charac
         TextView tvDumbArmy;
         TextView tvOrderFenix;
         TextView tvMinMagic;
+        TextView aliasLabel;
         TextView tvAlias;
         TextView tvWand;
         TextView tvBoggart;
@@ -123,7 +133,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Charac
             tvDumbArmy = (TextView) view.findViewById(R.id.dumbArmyTV);
             tvOrderFenix = (TextView) view.findViewById(R.id.orderFenixTV);
             tvMinMagic = (TextView) view.findViewById(R.id.minMagicTV);
-            tvAlias = (TextView) view.findViewById(R.id.aliasTV);
+            aliasLabel = view.findViewById(R.id.aliasLabel);
+            tvAlias =  view.findViewById(R.id.aliasTV);
             tvWand = (TextView) view.findViewById(R.id.wandTV);
             tvBoggart = (TextView) view.findViewById(R.id.boggartTV);
             tvAnimagus = (TextView) view.findViewById(R.id.animaTV);
